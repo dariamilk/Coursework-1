@@ -27,9 +27,6 @@ public class Employee {
     public int getId () {
         return id;
     }
-    public int getCounter () {
-        return counter;
-    }
     public void setName (String name) {
         this.name = name;
     }
@@ -38,6 +35,9 @@ public class Employee {
     }
     public void setSalary (double salary) {
         this.salary = salary;
+    }
+    public void setId (int id) {
+        this.id = id;
     }
     @Override
     public String toString () {
