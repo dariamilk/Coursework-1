@@ -25,6 +25,8 @@ public class EmployeeBook {
                 System.arraycopy(employees, i + 1, employees, i, Employee.counter - i - 1);
                 employees[Employee.counter - 1] = null;
                 Employee.counter--;
+                // Переназначение id, поскольку у меня он зависит от counter,
+                // чтобы новым объектам не назначались уже существующие id
                 for ( int j = i; j < Employee.counter; j++) {
                     employees[j].setId(j+1);
                 }
@@ -38,6 +40,8 @@ public class EmployeeBook {
                 System.arraycopy(employees, i + 1, employees, i, Employee.counter - i - 1);
                 employees[Employee.counter - 1] = null;
                 Employee.counter--;
+                // Переназначение id, поскольку у меня он зависит от counter,
+                // чтобы новым объектам не назначались уже существующие id
                 for ( int j = i; j < Employee.counter; j++) {
                     employees[j].setId(j+1);
                 }
@@ -59,13 +63,9 @@ public class EmployeeBook {
         }
     }
     public void printEmployeesPerDep () {
-        for (int j = 1; j < 5; j++) {
-            System.out.println("Отдел: " + j + " .");
-            for (int i = 0; i < Employee.counter; i++) {
-                if (employees[i].getDepartment() == j) {
-                    System.out.println(employees[i].getId() + ". Ф.И.О.: " + employees[i].getName() + ". " + "Зарплата: " + employees[i].getSalary() + ".");
-                }
-            }
+        for (int j = 1; j <= 5; j++) {
+            System.out.println("Отдел: " + j + ".");
+            printAllEmployeesPerDep(j);
         }
     }
     public void printEmployeeList () {
@@ -167,18 +167,18 @@ public class EmployeeBook {
     public void printAllEmployeesPerDep (int department) {
         for (int i = 0; i < Employee.counter; i++) {
             if (employees[i].getDepartment() == department) {
-                System.out.println(employees[i].getId() + ". Ф.И.О.: " + employees[i].getName() + ".\n" + "Зарплата: " + employees[i].getSalary() + ".");
+                System.out.println(employees[i].getId() + ". Ф.И.О.: " + employees[i].getName() + "." + "Зарплата: " + employees[i].getSalary() + ".");
             }
         }
     }
-    public void findEmployeesWithSalaryLessThan (double salary) {
+    public void printEmployeesWithSalaryLessThan (double salary) {
         for (int i = 0; i < Employee.counter; i++) {
             if (employees[i].getSalary() < salary) {
                 System.out.println(employees[i].getId() + ". Ф.И.О.: " + employees[i].getName() + ".\n" + "Зарплата: " + employees[i].getSalary() + ".");
             }
         }
     }
-    public void findEmployeesWithSalaryMoreThan (double salary) {
+    public void printEmployeesWithSalaryMoreThan (double salary) {
         for (int i = 0; i < Employee.counter; i++) {
             if (employees[i].getSalary() >= salary) {
                 System.out.println(employees[i].getId() + ". Ф.И.О.: " + employees[i].getName() + ".\n" + "Зарплата: " + employees[i].getSalary() + ".");
